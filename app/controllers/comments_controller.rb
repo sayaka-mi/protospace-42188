@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @comment = @prototype.comments.build(comment_params)
 
     if @comment.save
-      redirect_to prototype_path(@prototype) # 今回の実装には関係ありませんが、このようにPrefixでパスを指定することが望ましいです。
+      render"prototypes/show" # 今回の実装には関係ありませんが、このようにPrefixでパスを指定することが望ましいです。
     else
       @comments = @prototype.comments.includes(:user)
       render "prototypes/show", status: :unprocessable_entity
