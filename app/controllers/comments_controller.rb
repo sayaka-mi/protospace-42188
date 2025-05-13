@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   def create
     @prototype = Prototype.find(params[:prototype_id])
     @comment = @prototype.comments.build(comment_params)
+    @user = @prototype.user
 
     if @comment.save
       redirect_to prototype_path(@prototype) # 今回の実装には関係ありませんが、このようにPrefixでパスを指定することが望ましいです。
